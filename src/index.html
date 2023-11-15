@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>T2</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <header class="container-fluid p-3" style="background-color: #345BDB;">
+    <div class="row">
+      <h1 class="text-white">Meteorologia IMT</h1>
+    </div>
+  </header>
+  <main class="container">
+    <div class="row">
+
+      <div class="mt-5 col-sm-6">
+        <div class="card h-100">
+          <div class="card-header text-white" style="background-color: #345BDB">
+            <h1>Buscar</h1>
+          </div>
+          <div class="card-body">
+            <form onsubmit="getCoordinates(); return false;" onreset="clearResponses()">
+              <div class="mb-3">
+                <label for="city" class="form-label">Cidade</label>
+                <input type="text" class="form-control" id="city" name="city" placeholder="Digite o nome da cidade">
+              </div>
+              <div class="d-flex justify-content-between">
+                <button id="submit" type="submit" class="btn btn-primary">Buscar</button>
+                <button type="reset" class="btn btn-danger">Limpar</button>
+              </div>
+            </form>
+          </div>
+          <div class="card-footer d-flex justify-content-center bg-body"> <!-- Card Footer -->
+            <div style="width: 40%;">
+              <label for="lat" class="form-label">Latitude:</label>
+              <div class="form-control d-flex w-75" name="lat">
+                <span id="lat" class="text-center"
+                  style="display: inline-block; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Latitude</span>
+              </div>
+            </div>
+            <div style="width: 40%;">
+              <label for="lon" class="form-label">Longitude:</label>
+              <div class="form-control d-flex w-75" name="lon">
+                <span id="lon" class="text-center"
+                  style="display: inline-block; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Longitude</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5 col-sm-6">
+        <div class="card h-100">
+          <div class="card-header text-white" style="background-color: #345BDB;">
+            <h1>Resposta</h1>
+          </div>
+          <div class="card-body row">
+            <div class="container-fluid d-flex flex-column align-items-center justify-content-center">
+              <span id="feels_like" style="font-size: 50px;">
+                <i class="fa-solid fa-cloud fa-bounce" style="color: #727272;">°C</i>
+                <p id="city_name" class="fs-4 text-center"></p>
+              </span>
+            </div>
+            <div class="container-fluid d-flex flex-column">
+              <label for="description" class="form-label">Descrição:</label>
+              <span id="description" style="font-size: 20px;"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="mt-5">
+    <div>
+      <p class="text-center">Desenvolvido por <a href="https://github.com/FelipeCarillo">Felipe Carillo</a> e <a href="https://github.com/edkod">Edgar K. Messias</a></p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script src="js/index.js"></script>
+</body>
+
+</html>
+
+
+
+
+<!-- envia o nome pega a lat e long / envia lat e long, obtem de feels_like e description -->
