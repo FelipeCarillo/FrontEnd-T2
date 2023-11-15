@@ -17,11 +17,14 @@ app.post('/city', (req, res) => {
     }
     getCoordinates(city)
         .then(response => {
+            let statusCode = 200;
             let lat = response.lat;
             let lon = response.lon;
-            res.send({ lat, lon });
-            },
-        )
+            res.send({ statusCode, lat, lon });
+            }
+        ).catch(error => {
+            res.send({ statusCode: 404 });
+        });
     }
 );
 

@@ -12,9 +12,17 @@ function getCoordinates() {
     }).then(response => {
         return response.json();
     }).then(data => {
-        let lat = data.lat;
-        let lon = data.lon;
-        getWeather(lat, lon)
+        if (data.statusCode == 404) {
+            alert("Cidade não encontrada");
+            document.getElementById("submit").innerHTML = "Buscar";
+            return;
+        }
+        if (data.statusCode == 200) {
+            let lat = data.lat;
+            let lon = data.lon;
+            getWeather(lat, lon)
+        }
+
     }).catch(error => {
         console.log("Error" + error);
     });
