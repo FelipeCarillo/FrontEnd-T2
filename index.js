@@ -20,7 +20,8 @@ app.post('/city', (req, res) => {
             let statusCode = 200;
             let lat = response.lat;
             let lon = response.lon;
-            res.send({ statusCode, lat, lon });
+            let city = response.name;
+            res.send({ statusCode, lat, lon, city });
             }
         ).catch(error => {
             res.send({ statusCode: 404 });

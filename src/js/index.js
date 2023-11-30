@@ -20,7 +20,8 @@ function getCoordinates() {
         if (data.statusCode == 200) {
             let lat = data.lat;
             let lon = data.lon;
-            getWeather(lat, lon)
+            let city = data.city;
+            getWeather(lat, lon, city)
         }
 
     }).catch(error => {
@@ -28,7 +29,7 @@ function getCoordinates() {
     });
 }
 
-function getWeather(lat, lon) {
+function getWeather(lat, lon, city) {
     let endpoint = `http://localhost:3000/weather?lat=${lat}&lon=${lon}`;
     fetch(endpoint).then(response => {
         return response.json();
@@ -39,9 +40,10 @@ function getWeather(lat, lon) {
         document.getElementById("lat").innerHTML = lat;
         document.getElementById("lon").innerHTML = lon;
         document.getElementById("feels_like").innerHTML = feels_like;
+        document.getElementById("city_name").innerHTML = city;
         document.getElementById("description").innerHTML = description;
         console.log("Latitude: " + lat + "\nLongitude: " + lon);
-        console.log("Feels like: " + feels_like + "\nDescription: " + description);
+        console.log("\nCity: " + city + "Feels like: " + feels_like + "\nDescription: " + description);
     });
 }
 
@@ -50,4 +52,5 @@ function clearResponses() {
     document.getElementById("lon").innerHTML = "Longitude";
     document.getElementById("feels_like").innerHTML = '<i class="fa-solid fa-cloud fa-bounce" style="color: #727272;">°C</i>';
     document.getElementById("description").innerHTML = "";
+    document.getElementById("city_name").innerHTML = "";
 }
